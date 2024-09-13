@@ -1,28 +1,30 @@
 <template>
-  <h1>Shopping Cart</h1>
-  <div v-if="cartItems.length > 0">
-    <ShoppingCartList :products="cartItems"/>
-    <button class="checkout-button">Proceed to checkout</button>
+  <div v-if="products && products.length > 0">
+    <div class="product-container" v-for="product in products" :key="product?.id">
+      <img class="product-image" :src="product?.imageUrl" alt="Product Image"/>
+      <div class="details-wrap">
+        <h3>{{ product?.name }}</h3>
+        <p>{{ product?.price }}</p>
+      </div>
+      <button @click="$emit('remove-from-cart', product?.id)" class="remove-button">Remove from cart</button>
+    </div>
   </div>
-  <div v-if="cartItems.length === 0">
-    <h3>Currently you have no items in your cart</h3>
+  <div v-else>
+    <p>Your cart is empty</p>
   </div>
 </template>
 
 <script>
-import {cartItems} from "@/temp-data";
-import ShoppingCartList from "@/components/ShoppingCartList";
 
 export default {
-  name: "ShoppingCartPage",
-  data() {
-    return {
-      cartItems,
+  name: "ShoppingCartList",
+  props: ['products'],
+  emits: ['remove-from-cart'],
+  methods: {
+    removeFromCart(productId) {
+      this.$emit('remove-from-cart', productId);
     }
   },
-  components: {
-    ShoppingCartList,
-  }
 }
 
 </script>
