@@ -6,7 +6,7 @@
       </div>
     </router-link>
     <router-link to="/cart" class="cart-link">
-      <button>Shopping Cart</button>
+      <button> Shopping Cart </button>
     </router-link>
   </div>
 </template>
