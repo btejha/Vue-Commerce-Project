@@ -55,7 +55,7 @@ export default {
       const email = prompt('Please enter your email to sign in:');
       const auth = getAuth();
       const actionCodeSettings = {
-         url: 'https://node-express-be.onrender.com/products/${this.$route.params.productId}',
+         url: 'https://vue-commerce-project.onrender.com/products/${this.$route.params.productId}',
         handleCodeInApp: true,
       }
       await sendSignInLinkToEmail(auth, email, actionCodeSettings);
