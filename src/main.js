@@ -38,9 +38,12 @@ createApp(App)
                 path: '/products/:productId',
                 component: productDetailPage,
             }, {
+                path: '/',
+                    redirect: '/products',
+                }
+                ,{
                 path: '/:pathMatch(.*)*',
                 component: NotFoundPage,
-
             }]
     }))
 
